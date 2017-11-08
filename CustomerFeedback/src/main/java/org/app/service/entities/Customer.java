@@ -14,8 +14,10 @@ public class Customer {
 	
 	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
 	private List<Warranty> warranties = new ArrayList<>();
-	//
-
+	
+	@OneToMany(mappedBy = "customer")
+	private List<Feedback> feedbacks = new ArrayList<>();
+	
 	public Integer getCustomer_id() {
 		return customer_id;
 	}

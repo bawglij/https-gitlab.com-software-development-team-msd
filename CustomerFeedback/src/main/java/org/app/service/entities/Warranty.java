@@ -1,6 +1,8 @@
 package org.app.service.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -14,8 +16,19 @@ public class Warranty {
 	Date date_created;
 	@ManyToOne
 	private Customer customer;
+	
+	@OneToMany(mappedBy = "warranty_issue",fetch = FetchType.EAGER)
+	private List<Warranty_issue> warranties_issue = new ArrayList<>();
+	
+	public List<Warranty_issue> getWarranties_issue() {
+		return warranties_issue;
+	}
+	public void setWarranties_issue(List<Warranty_issue> warranties_issue) {
+		this.warranties_issue = warranties_issue;
+	}
 	public int getWarranty_id() {
 		return warranty_id;
+		
 	}
 	public void setWarranty_id(int warranty_id) {
 		this.warranty_id = warranty_id;
